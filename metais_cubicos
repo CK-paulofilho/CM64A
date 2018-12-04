@@ -1,0 +1,1690 @@
+#include <stdio.h>
+#include <stdlib.h>
+#include <locale.h>
+#include <math.h>
+#include <time.h>
+
+#define N 30
+
+//Software CM64A.app (1.0) - Metais Cúbicos
+//Arquivar estruturas cristalinas especificando qual e valor!!
+
+void EstCri (float ladoa, float ladob, float ladoc, float alfa, float beta, float gama) //função estrutura cristalina
+{
+
+    if (ladoa==ladob && ladob==ladoc && alfa==beta && beta==gama)
+    {
+        printf("Estrutura Cúbica");
+    }
+    else if (ladoa==ladob && ladob!=ladoc && alfa==beta && beta==gama)
+    {
+        printf("Estrutura Tetragonal");
+    }
+    else if (ladoa==ladob && ladob==ladoc && alfa==beta && beta==gama && alfa<120 && alfa!=90)
+    {
+        printf("Estrutura Romboédrica");
+    }
+    else if (ladoa!=ladob && ladob!=ladoc && ladoa!=ladoc && alfa!=beta && beta!=gama && alfa!=gama)
+    {
+        printf("Estrutura Triclínica");
+    }
+    else if (ladoa!=ladob && ladob!=ladoc && ladoa!=ladoc && alfa!=beta && alfa==gama && alfa==90)
+    {
+        printf("Estrutura Monoclínica");
+    }
+    else if (ladoa!=ladob && ladob!=ladoc && ladoa!=ladoc && alfa==beta && beta==gama && alfa==90)
+    {
+        printf("Estrutura Ortorrômbica");
+    }
+    else if (ladoa==ladob && ladob!=ladoc && alfa==beta && alfa==90 && gama==120)
+    {
+        printf("Estrutura Hexagonal");
+    }
+    else
+    {
+        printf("Estrutura inexistente");
+    }
+}
+
+void RedBra (float ladoa, float ladob, float ladoc, float alfa, float beta, float gama, float atomos_total) //função redes de bravais
+{
+
+    if (ladoa==ladob && ladob==ladoc && alfa==beta && beta==gama)
+    {
+        if (atomos_total==1)
+        {
+            printf("Estrutura Cúbica Simples");
+            int condicao_arquivo = 0;
+            while (condicao_arquivo!=1 && condicao_arquivo!=2)
+            {
+                printf("\nDeseja arquivar a estrutura em questão?\n1 - Sim\n2 - Não: ");
+                scanf("%d", &condicao_arquivo);
+                setbuf(stdin, NULL);
+                if (condicao_arquivo !=1 && condicao_arquivo!=2)
+                {
+                    printf("\nOpção inválida!");
+                }
+
+            }
+
+            if (condicao_arquivo ==1)
+            {
+                int soma_arquivo=1;
+                char elemento [N];
+                printf("\nEntre com o elemento estudado: ");
+                scanf("%[^\ns]", elemento);
+                setbuf(stdin, NULL);
+                FILE *CM_elemento = NULL;
+
+                if ((CM_elemento = fopen("C:\\Users\\Paulo\\Documents\\UTFPR\\Computacao\\II\\APS_\\estrutura.txt","w")) == NULL)
+                {
+                    printf("\nErro: Não é possível executar o arquivo!");
+                }
+                fprintf(CM_elemento,"%s: Estrutura Cúbica Simples", elemento);
+                soma_arquivo++;
+
+                fclose(CM_elemento);
+            }
+
+        }
+        else if (atomos_total==2)
+        {
+            printf("Estrutura Cúbica de Corpo Centrado");
+            int condicao_arquivo = 0;
+            while (condicao_arquivo!=1 && condicao_arquivo!=2)
+            {
+                printf("\nDeseja arquivar a Estrutura em questão?\n1 - Sim\n2 - Não: ");
+                scanf("%d", &condicao_arquivo);
+                setbuf(stdin, NULL);
+                if (condicao_arquivo !=1 && condicao_arquivo!=2)
+                {
+                    printf("\nOpção inválida!");
+                }
+
+            }
+
+            if (condicao_arquivo ==1)
+            {
+                int soma_arquivo=1;
+                char elemento [N];
+                printf("\nEntre com o elemento estudado: ");
+                scanf("%[^\ns]", elemento);
+                setbuf(stdin, NULL);
+                FILE *CM_elemento = NULL;
+
+                if ((CM_elemento = fopen("C:\\Users\\Paulo\\Documents\\UTFPR\\Computacao\\II\\APS_\\estrutura.txt","w")) == NULL)
+                {
+                    printf("\nErro: Não é possível executar o arquivo!");
+                }
+                fprintf(CM_elemento,"%s: Estrutura Cúbica de Corpo Centrado", elemento);
+                soma_arquivo++;
+
+                fclose(CM_elemento);
+            }
+
+        }
+        else if (atomos_total==4)
+        {
+            printf("Estrutura Cúbica de Face Centrada");
+            int condicao_arquivo = 0;
+            while (condicao_arquivo!=1 && condicao_arquivo!=2)
+            {
+                printf("\nDeseja arquivar a Estrutura em questão?\n1 - Sim\n2 - Não: ");
+                scanf("%d", &condicao_arquivo);
+                setbuf(stdin, NULL);
+                if (condicao_arquivo !=1 && condicao_arquivo!=2)
+                {
+                    printf("\nOpção inválida!");
+                }
+
+            }
+
+            if (condicao_arquivo ==1)
+            {
+                int soma_arquivo=1;
+                char elemento [N];
+                printf("\nEntre com o elemento estudado: ");
+                scanf("%[^\ns]", elemento);
+                setbuf(stdin, NULL);
+                FILE *CM_elemento = NULL;
+
+                if ((CM_elemento = fopen("C:\\Users\\Paulo\\Documents\\UTFPR\\Computacao\\II\\APS_\\estrutura.txt","w")) == NULL)
+                {
+                    printf("\nErro: Não é possível executar o arquivo!");
+                }
+                fprintf(CM_elemento,"%s: Estrutura Cúbica de Face Centrada", elemento);
+                soma_arquivo++;
+
+                fclose(CM_elemento);
+            }
+
+        }
+        else
+        {
+            printf("\nNão há estrutura cúbica com essa quantidade de átomos!");
+        }
+    }
+    else if (ladoa==ladob && ladob!=ladoc && alfa==beta && beta==gama)
+    {
+
+        if (atomos_total==1)
+        {
+            printf("Estrutura Tetragonal Simples");
+            int condicao_arquivo = 0;
+            while (condicao_arquivo!=1 && condicao_arquivo!=2)
+            {
+                printf("\nDeseja arquivar a Estrutura em questão?\n1 - Sim\n2 - Não: ");
+                scanf("%d", &condicao_arquivo);
+                setbuf(stdin, NULL);
+                if (condicao_arquivo !=1 && condicao_arquivo!=2)
+                {
+                    printf("\nOpção inválida!");
+                }
+
+            }
+
+            if (condicao_arquivo ==1)
+            {
+                int soma_arquivo=1;
+                char elemento [N];
+                printf("\nEntre com o elemento estudado: ");
+                scanf("%[^\ns]", elemento);
+                setbuf(stdin, NULL);
+                FILE *CM_elemento = NULL;
+
+                if ((CM_elemento = fopen("C:\\Users\\Paulo\\Documents\\UTFPR\\Computacao\\II\\APS_\\estrutura.txt","w")) == NULL)
+                {
+                    printf("\nErro: Não é possível executar o arquivo!");
+                }
+                fprintf(CM_elemento,"%s: Estrutura Tetragonal Simples", elemento);
+                soma_arquivo++;
+
+                fclose(CM_elemento);
+            }
+
+        }
+        else
+        {
+            printf("Estrutura Tetragonal de Corpo Centrado");
+            int condicao_arquivo = 0;
+            while (condicao_arquivo!=1 && condicao_arquivo!=2)
+            {
+                printf("\nDeseja arquivar a Estrutura em questão?\n1 - Sim\n2 - Não: ");
+                scanf("%d", &condicao_arquivo);
+                setbuf(stdin, NULL);
+                if (condicao_arquivo !=1 && condicao_arquivo!=2)
+                {
+                    printf("\nOpção inválida!");
+                }
+
+            }
+
+            if (condicao_arquivo ==1)
+            {
+                int soma_arquivo=1;
+                char elemento [N];
+                printf("\nEntre com o elemento estudado: ");
+                scanf("%[^\ns]", elemento);
+                setbuf(stdin, NULL);
+                FILE *CM_elemento = NULL;
+
+                if ((CM_elemento = fopen("C:\\Users\\Paulo\\Documents\\UTFPR\\Computacao\\II\\APS_\\estrutura.txt","w")) == NULL)
+                {
+                    printf("\nErro: Não é possível executar o arquivo!");
+                }
+                fprintf(CM_elemento,"%s: Estrutura Tetragonal de Corpo Centrado", elemento);
+                soma_arquivo++;
+
+                fclose(CM_elemento);
+            }
+
+        }
+    }
+    else if (ladoa==ladob && ladob==ladoc && alfa==beta && beta==gama && alfa<120 && alfa!=90)
+    {
+        printf("Estrutura Romboédrica");
+        int condicao_arquivo = 0;
+        while (condicao_arquivo!=1 && condicao_arquivo!=2)
+        {
+            printf("\nDeseja arquivar a Estrutura em questão?\n1 - Sim\n2 - Não: ");
+            scanf("%d", &condicao_arquivo);
+            setbuf(stdin, NULL);
+            if (condicao_arquivo !=1 && condicao_arquivo!=2)
+            {
+                printf("\nOpção inválida!");
+            }
+
+        }
+
+        if (condicao_arquivo ==1)
+        {
+            int soma_arquivo=1;
+            char elemento [N];
+            printf("\nEntre com o elemento estudado: ");
+            scanf("%[^\ns]", elemento);
+            setbuf(stdin, NULL);
+            FILE *CM_elemento = NULL;
+
+            if ((CM_elemento = fopen("C:\\Users\\Paulo\\Documents\\UTFPR\\Computacao\\II\\APS_\\estrutura.txt","w")) == NULL)
+            {
+                printf("\nErro: Não é possível executar o arquivo!");
+            }
+            fprintf(CM_elemento,"%s: Estrutura Romboédrica", elemento);
+            soma_arquivo++;
+
+            fclose(CM_elemento);
+        }
+
+    }
+    else if (ladoa!=ladob && ladob!=ladoc && ladoa!=ladoc && alfa!=beta && beta!=gama && alfa!=gama)
+    {
+        printf("Estrutura Triclínica");
+        int condicao_arquivo = 0;
+        while (condicao_arquivo!=1 && condicao_arquivo!=2)
+        {
+            printf("\nDeseja arquivar a Estrutura em questão?\n1 - Sim\n2 - Não: ");
+            scanf("%d", &condicao_arquivo);
+            setbuf(stdin, NULL);
+            if (condicao_arquivo !=1 && condicao_arquivo!=2)
+            {
+                printf("\nOpção inválida!");
+            }
+
+        }
+
+        if (condicao_arquivo ==1)
+        {
+            int soma_arquivo=1;
+            char elemento [N];
+            printf("\nEntre com o elemento estudado: ");
+            scanf("%[^\ns]", elemento);
+            setbuf(stdin, NULL);
+            FILE *CM_elemento = NULL;
+
+            if ((CM_elemento = fopen("C:\\Users\\Paulo\\Documents\\UTFPR\\Computacao\\II\\APS_\\estrutura.txt","w")) == NULL)
+            {
+                printf("\nErro: Não é possível executar o arquivo!");
+            }
+            fprintf(CM_elemento,"%s: Estrutura Triclínica", elemento);
+            soma_arquivo++;
+
+            fclose(CM_elemento);
+        }
+
+    }
+    else if (ladoa!=ladob && ladob!=ladoc && ladoa!=ladoc && alfa!=beta && alfa==gama && alfa==90)
+    {
+
+        if (atomos_total==1)
+        {
+            printf("Estrutura Monoclínica Simples");
+            int condicao_arquivo = 0;
+            while (condicao_arquivo!=1 && condicao_arquivo!=2)
+            {
+                printf("\nDeseja arquivar a Estrutura em questão?\n1 - Sim\n2 - Não: ");
+                scanf("%d", &condicao_arquivo);
+                setbuf(stdin, NULL);
+                if (condicao_arquivo !=1 && condicao_arquivo!=2)
+                {
+                    printf("\nOpção inválida!");
+                }
+
+            }
+
+            if (condicao_arquivo ==1)
+            {
+                int soma_arquivo=1;
+                char elemento [N];
+                printf("\nEntre com o elemento estudado: ");
+                scanf("%[^\ns]", elemento);
+                setbuf(stdin, NULL);
+                FILE *CM_elemento = NULL;
+
+                if ((CM_elemento = fopen("C:\\Users\\Paulo\\Documents\\UTFPR\\Computacao\\II\\APS_\\estrutura.txt","w")) == NULL)
+                {
+                    printf("\nErro: Não é possível executar o arquivo!");
+                }
+                fprintf(CM_elemento,"%s: Estrutura Monoclínica", elemento);
+                soma_arquivo++;
+
+                fclose(CM_elemento);
+            }
+
+        }
+        else
+        {
+            printf("Estrutura Monoclínica de Base Centrada");
+            int condicao_arquivo = 0;
+            while (condicao_arquivo!=1 && condicao_arquivo!=2)
+            {
+                printf("\nDeseja arquivar a Estrutura em questão?\n1 - Sim\n2 - Não: ");
+                scanf("%d", &condicao_arquivo);
+                setbuf(stdin, NULL);
+                if (condicao_arquivo !=1 && condicao_arquivo!=2)
+                {
+                    printf("\nOpção inválida!");
+                }
+
+            }
+
+            if (condicao_arquivo ==1)
+            {
+                int soma_arquivo=1;
+                char elemento [N];
+                printf("\nEntre com o elemento estudado: ");
+                scanf("%[^\ns]", elemento);
+                setbuf(stdin, NULL);
+                FILE *CM_elemento = NULL;
+
+                if ((CM_elemento = fopen("C:\\Users\\Paulo\\Documents\\UTFPR\\Computacao\\II\\APS_\\estrutura.txt","w")) == NULL)
+                {
+                    printf("\nErro: Não é possível executar o arquivo!");
+                }
+                fprintf(CM_elemento,"%s: Estrutura Monoclínica de Base Centrada", elemento);
+                soma_arquivo++;
+
+                fclose(CM_elemento);
+            }
+
+        }
+    }
+    else if (ladoa!=ladob && ladob!=ladoc && ladoa!=ladoc && alfa==beta && beta==gama && alfa==90)
+    {
+
+        if(atomos_total == 1)
+        {
+            printf("Estrutura Ortorrômbica Simples");
+            int condicao_arquivo = 0;
+            while (condicao_arquivo!=1 && condicao_arquivo!=2)
+            {
+                printf("\nDeseja arquivar a Estrutura em questão?\n1 - Sim\n2 - Não: ");
+                scanf("%d", &condicao_arquivo);
+                setbuf(stdin, NULL);
+                if (condicao_arquivo !=1 && condicao_arquivo!=2)
+                {
+                    printf("\nOpção inválida!");
+                }
+
+            }
+
+            if (condicao_arquivo ==1)
+            {
+                int soma_arquivo=1;
+                char elemento [N];
+                printf("\nEntre com o elemento estudado: ");
+                scanf("%[^\ns]", elemento);
+                setbuf(stdin, NULL);
+                FILE *CM_elemento = NULL;
+
+                if ((CM_elemento = fopen("C:\\Users\\Paulo\\Documents\\UTFPR\\Computacao\\II\\APS_\\estrutura.txt","w")) == NULL)
+                {
+                    printf("\nErro: Não é possível executar o arquivo!");
+                }
+                fprintf(CM_elemento,"%s: Estrutura Ortorrômbica Simples", elemento);
+                soma_arquivo++;
+
+                fclose(CM_elemento);
+            }
+
+        }
+        else if(atomos_total == 2)
+        {
+            int atomo_centrado=0;
+            while (atomo_centrado!=1 || atomo_centrado !=2)
+            {
+                printf("\nA estrutura possui átomo centrado na célula?\n1 - Sim\t2 - Não\n");
+                scanf("%d", &atomo_centrado);
+                setbuf(stdin, NULL);
+            }//while átomo centrado
+
+            if (atomo_centrado == 1)
+            {
+                printf("Estrutura Ortorrômbica de Corpo Centrado");
+                int condicao_arquivo = 0;
+                while (condicao_arquivo!=1 && condicao_arquivo!=2)
+                {
+                    printf("\nDeseja arquivar a Estrutura em questão?\n1 - Sim\n2 - Não: ");
+                    scanf("%d", &condicao_arquivo);
+                    setbuf(stdin, NULL);
+                    if (condicao_arquivo !=1 && condicao_arquivo!=2)
+                    {
+                        printf("\nOpção inválida!");
+                    }
+
+                }
+
+                if (condicao_arquivo ==1)
+                {
+                    int soma_arquivo=1;
+                    char elemento [N];
+                    printf("\nEntre com o elemento estudado: ");
+                    scanf("%[^\ns]", elemento);
+                    setbuf(stdin, NULL);
+                    FILE *CM_elemento = NULL;
+
+                    if ((CM_elemento = fopen("C:\\Users\\Paulo\\Documents\\UTFPR\\Computacao\\II\\APS_\\estrutura.txt","w")) == NULL)
+                    {
+                        printf("\nErro: Não é possível executar o arquivo!");
+                    }
+                    fprintf(CM_elemento,"%s: Estrutura Ortorrômbica de Corpo Centrado", elemento);
+                    soma_arquivo++;
+
+                    fclose(CM_elemento);
+                }
+
+            }
+            else
+            {
+                printf("Estrutura Ortorrômbica de Base Centrada");
+                int condicao_arquivo = 0;
+                while (condicao_arquivo!=1 && condicao_arquivo!=2)
+                {
+                    printf("\nDeseja arquivar a Estrutura em questão?\n1 - Sim\n2 - Não: ");
+                    scanf("%d", &condicao_arquivo);
+                    setbuf(stdin, NULL);
+                    if (condicao_arquivo !=1 && condicao_arquivo!=2)
+                    {
+                        printf("\nOpção inválida!");
+                    }
+
+                }
+
+                if (condicao_arquivo ==1)
+                {
+                    int soma_arquivo=1;
+                    char elemento [N];
+                    printf("\nEntre com o elemento estudado: ");
+                    scanf("%[^\ns]", elemento);
+                    setbuf(stdin, NULL);
+                    FILE *CM_elemento = NULL;
+
+                    if ((CM_elemento = fopen("C:\\Users\\Paulo\\Documents\\UTFPR\\Computacao\\II\\APS_\\estrutura.txt","w")) == NULL)
+                    {
+                        printf("\nErro: Não é possível executar o arquivo!");
+                    }
+                    fprintf(CM_elemento,"%s: Estrutura Ortorrômbica de Base Centrada", elemento);
+                    soma_arquivo++;
+
+                    fclose(CM_elemento);
+                }
+
+            }
+        }
+        else
+        {
+            printf("Estrutura Ortorrômbica de Face Centrada");
+            int condicao_arquivo = 0;
+            while (condicao_arquivo!=1 && condicao_arquivo!=2)
+            {
+                printf("\nDeseja arquivar a Estrutura em questão?\n1 - Sim\n2 - Não: ");
+                scanf("%d", &condicao_arquivo);
+                setbuf(stdin, NULL);
+                if (condicao_arquivo !=1 && condicao_arquivo!=2)
+                {
+                    printf("\nOpção inválida!");
+                }
+
+            }
+
+            if (condicao_arquivo ==1)
+            {
+                int soma_arquivo=1;
+                char elemento [N];
+                printf("\nEntre com o elemento estudado: ");
+                scanf("%[^\ns]", elemento);
+                setbuf(stdin, NULL);
+                FILE *CM_elemento = NULL;
+
+                if ((CM_elemento = fopen("C:\\Users\\Paulo\\Documents\\UTFPR\\Computacao\\II\\APS_\\estrutura.txt","w")) == NULL)
+                {
+                    printf("\nErro: Não é possível executar o arquivo!");
+                }
+                fprintf(CM_elemento,"%s: Estrutura Ortorrômbica de Face Centrada", elemento);
+                soma_arquivo++;
+
+                fclose(CM_elemento);
+            }
+
+        }
+    }
+    else if (ladoa==ladob && ladob!=ladoc && alfa==beta && alfa==90 && gama==120)
+    {
+        printf("Estrutura Hexagonal");
+        int condicao_arquivo = 0;
+        while (condicao_arquivo!=1 && condicao_arquivo!=2)
+        {
+            printf("\nDeseja arquivar a Estrutura em questão?\n1 - Sim\n2 - Não: ");
+            scanf("%d", &condicao_arquivo);
+            setbuf(stdin, NULL);
+            if (condicao_arquivo !=1 && condicao_arquivo!=2)
+            {
+                printf("\nOpção inválida!");
+            }
+
+        }
+
+        if (condicao_arquivo ==1)
+        {
+            int soma_arquivo=1;
+            char elemento [N];
+            printf("\nEntre com o elemento estudado: ");
+            scanf("%[^\ns]", elemento);
+            setbuf(stdin, NULL);
+            FILE *CM_elemento = NULL;
+
+            if ((CM_elemento = fopen("C:\\Users\\Paulo\\Documents\\UTFPR\\Computacao\\II\\APS_\\estrutura.txt","w")) == NULL)
+            {
+                printf("\nErro: Não é possível executar o arquivo!");
+            }
+            fprintf(CM_elemento,"%s: Estrutura Hexagonal", elemento);
+            soma_arquivo++;
+
+            fclose(CM_elemento);
+        }
+
+    }
+    else
+    {
+        printf("Estrutura inexistente");
+    }
+}
+
+int MDC_Aux (int numero_1, int numero_2) //cálculo do mdc
+{
+
+    if (numero_2==0)
+        return numero_1;
+    else
+        return MDC_Aux(numero_2,numero_1%numero_2);
+}
+
+int MMC_Aux (int numero_1, int numero_2 ) //cálculo do mmc
+{
+
+    int mmc;
+    if (numero_2 == 0)
+        return numero_1;
+    else
+    {
+        mmc = numero_1*numero_2 / (MDC_Aux(numero_1, numero_2));
+        return mmc;
+    }
+}
+
+void IndMil (float ci_xn, float ci_xd, float ci_yn, float ci_yd, float ci_zn, float ci_zd, float cf_xn, float cf_xd, float cf_yn, float cf_yd, float cf_zn, float cf_zd) //índices de miller
+{
+
+    float distancia_xn=0, distancia_xd=0, distancia_yn=0, distancia_yd=0;
+    float distancia_zn=0, distancia_zd=0, aux_d1=0, aux_d2=0, aux_d3=0;
+    float IM_h=0, IM_k=0, IM_l=0;
+
+    int p_r=0;
+    while (p_r != 1 && p_r != 2)
+    {
+        printf("\nAs coordenadas são de:\n1 - Reta \n2 - Plano ");
+        scanf("%d", &p_r);
+        setbuf(stdin, NULL);
+    }
+
+    if (ci_xd == cf_xd && cf_xd == 1)
+    {
+        distancia_xn = cf_xn - ci_xn;
+    }
+    else
+    {
+        aux_d1 = cf_xd;
+        aux_d2 = ci_xd;
+        cf_xd = MMC_Aux(ci_xd,cf_xd);
+        ci_xd = cf_xd;
+        aux_d1 = cf_xd / aux_d1;
+        aux_d2 = ci_xd / aux_d2;
+        cf_xn = cf_xn * aux_d1;
+        ci_xn = ci_xn * aux_d2;
+
+        distancia_xn = cf_xn - ci_xn;
+    }
+    if (ci_yd == cf_yd && cf_yd == 1)
+    {
+        distancia_yn = cf_yn - ci_yn;
+    }
+    else
+    {
+        aux_d1 = cf_yd;
+        aux_d2 = ci_yd;
+        cf_yd = MMC_Aux(ci_yd,cf_yd);
+        ci_yd = cf_yd;
+        aux_d1 = cf_yd / aux_d1;
+        aux_d2 = ci_yd / aux_d2;
+        cf_yn = cf_yn * aux_d1;
+        ci_yn = ci_yn * aux_d2;
+
+        distancia_yn = cf_yn - ci_yn;
+    }
+    if (ci_zd == cf_zd && cf_zd == 1)
+    {
+        distancia_zn = cf_zn - ci_zn;
+    }
+    else
+    {
+        aux_d1 = cf_zd;
+        aux_d2 = ci_zd;
+        cf_zd = MMC_Aux(ci_zd,cf_zd);
+        ci_zd = cf_zd;
+        aux_d1 = cf_zd / aux_d1;
+        aux_d2 = ci_zd / aux_d2;
+        cf_zn = cf_zn * aux_d1;
+        ci_zn = ci_zn * aux_d2;
+
+        distancia_zn = cf_zn - ci_zn;
+    }
+    if (p_r == 1)
+    {
+        aux_d1 = cf_xd;
+        aux_d2 = cf_yd;
+        aux_d3 = cf_zd;
+        cf_yd = MMC_Aux(cf_xd, cf_yd);
+        cf_zd = MMC_Aux(cf_yd, cf_zd);
+        cf_yd = cf_zd;
+        cf_xd = cf_yd;
+
+        IM_h = cf_xn * (cf_xd/aux_d1);
+        IM_k = cf_yn * (cf_yd/aux_d2);
+        IM_l = cf_zn * (cf_zd/aux_d3);
+
+        printf("\n[%.0f  %.0f  %.0f]", IM_h, IM_k, IM_l);
+    }
+    else
+    {
+        float co_xd = 0, co_yd = 0, co_zd = 0;
+
+        float co_xn = abs(co_xn - co_xd);
+        float co_yn = abs(co_yn - co_yd);
+        float co_zn = abs(co_zn - co_zd);
+        printf("\n%f %f %f ", co_xn, co_yn, co_zn);
+        aux_d1 = co_xn;
+        aux_d2 = co_yn;
+        aux_d3 = co_zn;
+        printf("\n%f %f %f ", aux_d1, aux_d2, aux_d3);
+        co_xn = co_xd;
+        co_yn = co_yd;
+        co_zn = co_zd;
+        printf("\n%f %f %f ", co_xn, co_yn, co_zn);
+        co_xd = aux_d1;
+        co_yd = aux_d2;
+        co_zd = aux_d3;
+        printf("\n%f %f %f ", co_xd, co_yd, co_zd);
+        co_yd = MMC_Aux(co_xd, co_yd);
+        co_zd = MMC_Aux(co_yd, co_zd);
+        co_yd = co_zd;
+        co_xd = co_yd;
+
+
+        IM_h = co_xn * (co_xd/aux_d1);
+        IM_k = co_yn * (co_yd/aux_d2);
+        IM_l = co_zn * (co_zd/aux_d3);
+
+        printf("\n(%.0f  %.0f  %.0f)", IM_h, IM_k, IM_l);
+    }
+
+    printf("\n\nLEMBRETE: Usam-se traços sobre os números negativos, e não o sinal de negativo!!!");
+    p_r = 0;
+}
+
+float DisRep (float raio_atomo) //função distência de repetição
+{
+
+    float parametro_de_rede=0, d_rep=0;
+    int dis_opcao=0;
+
+    setbuf(stdin, NULL);
+    while (dis_opcao!=1 && dis_opcao!=2 && dis_opcao!=3)
+    {
+        printf("\nPara qual estrutura deseja calcular a distância de repetição ? \n1 - CS\n2 - CCC\n3 - CFC: ");
+        scanf("%d", &dis_opcao);
+        setbuf(stdin, NULL);
+    }
+
+    float IM_h=0, IM_k=0, IM_l=0;
+
+    printf("Obedecendo a regra dos menores inteiros, entre com os Índices de Miller");
+    printf("\nÍndice 'h': ");
+    scanf("%d", &IM_h);
+    setbuf(stdin, NULL);
+
+    printf("\nÍndice 'k': ");
+    scanf("%d", &IM_k);
+    setbuf(stdin, NULL);
+
+    printf("\nÍndice 'l': ");
+    scanf("%d", &IM_l);
+    setbuf(stdin, NULL);
+
+
+    switch (dis_opcao)
+    {
+
+    case 1:
+        parametro_de_rede = 2*raio_atomo;
+
+        if ((IM_h==0 && IM_k==0) || (IM_h==0 && IM_l==0) ||(IM_k==0 && IM_l==0))
+        {
+            d_rep = parametro_de_rede;
+        }
+        else if((IM_h>0 && IM_k==0 && IM_l==IM_h) || (IM_k>0 && IM_h==0 && IM_l==IM_k) || (IM_h>0 && IM_l==0 && IM_k==IM_h))
+        {
+            d_rep = sqrt(2)*parametro_de_rede;
+        }
+        else if((IM_h>0 && IM_k==IM_h && IM_l==IM_h) || (IM_k>0 && IM_h==IM_k && IM_l==IM_k) || (IM_l>0 && IM_l==IM_k && IM_k==IM_h))
+        {
+            d_rep = sqrt(3)*parametro_de_rede;
+        }
+        else
+        {
+            d_rep = 0;
+        }
+        return d_rep;
+        break;
+
+    case 2:
+        parametro_de_rede = (4*raio_atomo)/sqrt(3);
+        if (IM_h==IM_k && IM_k==IM_l && IM_h>0)
+        {
+            d_rep = 0.5*sqrt(2)*parametro_de_rede;
+        }
+        else if (IM_h==IM_k && IM_h>0 && IM_l==0)
+        {
+            d_rep = 2*raio_atomo;
+        }
+        else if (IM_h==IM_l && IM_h>0 && IM_k==0)
+        {
+            d_rep = 2*raio_atomo;
+        }
+        else if (IM_l==IM_k && IM_l>0 && IM_h==0)
+        {
+            d_rep = 2*raio_atomo;
+        }
+        else if (IM_h==IM_k && IM_l>0 && IM_h==0)
+        {
+            d_rep = 2*raio_atomo;
+        }
+        else if (IM_l==IM_k && IM_h>0 && IM_l==0)
+        {
+            d_rep = 2*raio_atomo;
+        }
+        else if (IM_h==IM_l && IM_k>0 && IM_l==0)
+        {
+            d_rep = 2*raio_atomo;
+        }
+        return d_rep;
+        break;
+
+    case 3:
+        parametro_de_rede = (4*raio_atomo)/sqrt(2);
+        if (IM_h==IM_k && IM_k==IM_l && IM_h>0)
+        {
+            d_rep = 2*raio_atomo;
+            return d_rep;
+        }
+        else if (IM_h==IM_k && IM_h>0 && IM_l==0)
+        {
+            d_rep = 0.5*sqrt(2)*parametro_de_rede;
+            return d_rep;
+        }
+        else if (IM_h==IM_l && IM_h>0 && IM_k==0)
+        {
+            d_rep = 0.5*sqrt(2)*parametro_de_rede;
+            return d_rep;
+        }
+        else if (IM_l==IM_k && IM_l>0 && IM_h==0)
+        {
+            d_rep = 0.5*sqrt(2)*parametro_de_rede;
+            return d_rep;
+        }
+        else if (IM_h==IM_k && IM_l>0 && IM_h==0)
+        {
+            d_rep = 2*raio_atomo;
+            return d_rep;
+        }
+        else if (IM_l==IM_k && IM_h>0 && IM_l==0)
+        {
+            d_rep = 2*raio_atomo;
+            return d_rep;
+        }
+        else if (IM_h==IM_l && IM_k>0 && IM_l==0)
+        {
+            d_rep = 2*raio_atomo;
+            return d_rep;
+        }
+        break;
+
+    default:
+        printf("\nPossivelmente, a estrutura não é cúbicas ou não existe uma estrutura correspondente!");
+        return 0;
+
+    }
+
+}
+
+void DenLin_FraEmp (float d_rep, float raio_atomo) //função densidade linear e fração de empacotamento
+{
+
+    float parametro_de_rede=0, den_lin=0, fra_emp=0, n_atomos=0;
+    int den_opcao=0;
+
+    do
+    {
+        printf("\nQual estrutura? \n1 - CS\n2 - CCC\n3 - CFC: ");
+        scanf("%d", &den_opcao);
+    }
+    while (den_opcao!=1 && den_opcao!=2 && den_opcao!=3);
+
+    int IM_h=0, IM_k=0, IM_l=0;
+
+    printf("Obedecendo a regra dos menores inteiros, entre com os Índices de Miller");
+    printf("\nÍndice 'h': ");
+    scanf("%d", &IM_h);
+    setbuf(stdin, NULL);
+
+    printf("\nÍndice 'k': ");
+    scanf("%d", &IM_k);
+    setbuf(stdin, NULL);
+
+    printf("\nÍndice 'l': ");
+    scanf("%d", &IM_l);
+    setbuf(stdin, NULL);
+    switch (den_opcao)
+    {
+
+    case 1:
+        parametro_de_rede = 2*raio_atomo;
+        den_lin = (n_atomos*d_rep)/sqrt(pow(IM_h,2)*pow(IM_k,2)*pow(IM_l,2))*parametro_de_rede;
+        fra_emp = 2*den_lin*raio_atomo;
+        printf("\nDensidade Linear: %.4f pontos de rede/nm", den_lin);
+        printf("\nFração de Empacotamento: %.4f ", fra_emp);
+        printf("\n%.1f %.1f %.1f %.1f %.1f %.1f %.1f ", d_rep, raio_atomo, IM_h, IM_k, IM_l, parametro_de_rede);
+
+        break;
+
+    case 2:
+        parametro_de_rede = (4*raio_atomo)/sqrt(3);
+        den_lin = (n_atomos*d_rep)/sqrt(pow(IM_h,2)*pow(IM_k,2)*pow(IM_l,2))*parametro_de_rede;
+        fra_emp = 2*den_lin*raio_atomo;
+        printf("\nDensidade Linear: %.4f pontos de rede/nm", den_lin);
+        printf("\nFração de Empacotamento: %.4f ", fra_emp);
+        break;
+
+    case 3:
+        parametro_de_rede = (4*raio_atomo)/sqrt(2);
+        den_lin = (n_atomos*d_rep)/sqrt(pow(IM_h,2)*pow(IM_k,2)*pow(IM_l,2))*parametro_de_rede;
+        fra_emp = 2*den_lin*raio_atomo;
+        printf("\nDensidade Linear: %.4f pontos de rede/nm", den_lin);
+        printf("\nFração de Empacotamento: %.4f ", fra_emp);
+        break;
+    default:
+        printf("\nPossivelmente, a estrutura não é cúbica ou não exista!");
+    }
+}
+
+float DisInt (float raio_atomo) //função distância planar
+{
+
+    int IM_h=0, IM_k=0, IM_l=0;
+    float dis_hkl=0, parametro_de_rede=0;
+
+    int dis_opcao=0;
+    do
+    {
+        printf("\nPara qual estrutura deseja calcular a distância de repetição ? \n1 - CS\n2 - CCC\n3 - CFC: ");
+        scanf("%d", &dis_opcao);
+    }
+    while (dis_opcao!=1 || dis_opcao!=2 || dis_opcao!=3);
+
+
+    printf("Obedecendo a regra dos menores inteiros, entre com os Índices de Miller");
+    printf("\nÍndice 'h': ");
+    scanf("%d", &IM_h);
+    setbuf(stdin, NULL);
+
+    printf("\nÍndice 'k': ");
+    scanf("%d", &IM_k);
+    setbuf(stdin, NULL);
+
+    printf("\nÍndice 'l': ");
+    scanf("%d", &IM_l);
+    setbuf(stdin, NULL);
+
+
+    switch (dis_opcao)
+    {
+
+    case 1:
+        parametro_de_rede = 2*raio_atomo;
+        dis_hkl = parametro_de_rede/sqrt(pow(IM_h,2)*pow(IM_k,2)*pow(IM_l,2));
+        return dis_hkl;
+        break;
+
+    case 2:
+        parametro_de_rede = (4*raio_atomo)/sqrt(3);
+        dis_hkl = parametro_de_rede/sqrt(pow(IM_h,2)*pow(IM_k,2)*pow(IM_l,2));
+        return dis_hkl;
+        break;
+
+    case 3:
+        parametro_de_rede = (4*raio_atomo)/sqrt(2);
+        dis_hkl = parametro_de_rede/sqrt(pow(IM_h,2)*pow(IM_k,2)*pow(IM_l,2));
+        return dis_hkl;
+        break;
+
+    default:
+        printf("\nPossivelmente, a estrutura não é cúbica ou não exista!");
+    }//switch estruturas
+}
+
+void DenPla_FraEmp (float co_xn, float co_xd, float co_yn, float co_yd, float co_zn, float co_zd, float raio_atomo)  //função densidade planar e fração de empacotamento
+{
+
+    float  aux_d1=0, aux_d2=0, aux_d3=0;
+
+    co_xn = abs(co_xn - co_xd);
+    co_yn = abs(co_yn - co_yd);
+    co_zn = abs(co_zn - co_zd);
+    printf("\n%f %f %f ", co_xn, co_yn, co_zn);
+    aux_d1 = co_xn;
+    aux_d2 = co_yn;
+    aux_d3 = co_zn;
+    printf("\n%f %f %f ", aux_d1, aux_d2, aux_d3);
+    co_xn = co_xd;
+    co_yn = co_yd;
+    co_zn = co_zd;
+    printf("\n%f %f %f ", co_xn, co_yn, co_zn);
+    co_xd = aux_d1;
+    co_yd = aux_d2;
+    co_zd = aux_d3;
+    printf("\n%f %f %f ", co_xd, co_yd, co_zd);
+    co_yd = MMC_Aux(co_xd, co_yd);
+    co_zd = MMC_Aux(co_yd, co_zd);
+    co_yd = co_zd;
+    co_xd = co_yd;
+
+    printf("\n%f %f %f ", co_xd, co_yd, co_zd);
+
+    float IM_h = co_xn * (co_xd/aux_d1);
+    float IM_k = co_yn * (co_yd/aux_d2);
+    float IM_l = co_zn * (co_zd/aux_d3);
+
+    int opc_den_pla=0, opc_est_cri=0, qua_ato=0, lin_for=0, aux_n=0;
+    float area_pla=0, parametro_de_rede=0, den_pla=0, fra_emp=0, con_ato=0, vet_con[aux_n];
+
+    do
+    {
+        printf("\nInsira a estrutura cúbica correspondente:\n1 - CS\n2 - CCC\n3 - CFC :");
+        scanf("%d", &opc_est_cri);
+        setbuf(stdin, NULL);
+    }
+    while (opc_est_cri!=1 && opc_est_cri!=2 && opc_est_cri!=3);
+
+    switch (opc_est_cri)
+    {
+
+    case 1:
+        parametro_de_rede = 2*raio_atomo;
+        do
+        {
+            printf("\nInsira a opção de equação que define o plano:\n1 - Quadrado\n2 - Triângulo: ");
+            scanf("%d", &opc_den_pla);
+            setbuf(stdin, NULL);
+        }
+        while (opc_den_pla!=1 && opc_den_pla!=2);
+
+        switch (opc_den_pla)
+        {
+
+        case 1:
+            printf("\nEntre com a quantidade de contribuições diferentes no plano: ");
+            scanf("%d", &aux_n);
+            setbuf(stdin,NULL);
+
+            for (lin_for=0; lin_for<aux_n; lin_for++)
+            {
+                printf("\nEntre com a contribuição do átomo na célula (em decimais): ");
+                scanf("%f", &con_ato);
+                setbuf(stdin, NULL);
+                printf("\nEntre com a quantidade de átomos contribuintes: ");
+                scanf("%d", &qua_ato);
+
+                qua_ato = qua_ato *con_ato;
+                vet_con[lin_for] = qua_ato;
+            }//for átomos no plano (vetorial)
+
+            for (lin_for=0; lin_for<aux_n; lin_for++)
+            {
+                if (lin_for==0)
+                {
+                    qua_ato = vet_con[lin_for];
+                }
+                else
+                {
+                    qua_ato += vet_con[lin_for];
+                }
+            }//for átomos no plano (escalar)
+
+            den_pla = (qua_ato * 3,141592*pow(raio_atomo,2)) / (pow(parametro_de_rede,2));
+            fra_emp = (qua_ato * 3,141592 * pow(raio_atomo,2))/ (pow(parametro_de_rede,2));
+
+            printf("\nDensidade Planar:%.4f átomos/nm.nm \nFração de empacotamento:%.4f");
+            break;
+
+        case 2:
+            printf("\nEntre com a quantidade de contribuições diferentes no plano: ");
+            scanf("%d", &aux_n);
+            setbuf(stdin,NULL);
+
+            for (lin_for=0; lin_for<aux_n; lin_for++)
+            {
+                printf("\nEntre com a contribuição do átomo na célula (em decimais): ");
+                scanf("%f", &con_ato);
+                setbuf(stdin, NULL);
+                printf("\nEntre com a quantidade de átomos contribuintes: ");
+                scanf("%d", &qua_ato);
+
+                qua_ato = qua_ato *con_ato;
+                vet_con[lin_for] = qua_ato;
+            }//for átomos no plano (vetorial)
+
+            for (lin_for=0; lin_for<aux_n; lin_for++)
+            {
+                if (lin_for==0)
+                {
+                    qua_ato = vet_con[lin_for];
+                }
+                else
+                {
+                    qua_ato += vet_con[lin_for];
+                }
+            }//for átomos no plano (escalar)
+
+            den_pla = (qua_ato * 3,141592*pow(raio_atomo,2)) / ((pow(parametro_de_rede,2)/2));
+            fra_emp = (qua_ato * 3,141592 * pow(raio_atomo,2))/ (pow(parametro_de_rede,2));
+
+            printf("\nDensidade Planar:%.4f átomos/nm.nm \nFração de empacotamento:%.4f");
+
+            break;
+
+        default:
+            printf("\nPlano não listado!");
+            break;
+        }//switch densidade
+
+        break;
+
+    case 2:
+        parametro_de_rede = 4*raio_atomo/sqrt(3);
+
+        do
+        {
+            printf("\nInsira a opção de equação que define o plano:\n1 - Quadrado\n3 - Triângulo: ");
+            scanf("%d", &opc_den_pla);
+            setbuf(stdin, NULL);
+        }
+        while (opc_den_pla!=1 && opc_den_pla!=2);
+
+        switch (opc_den_pla)
+        {
+
+        case 1:
+            printf("\nEntre com a quantidade de contribuições diferentes no plano: ");
+            scanf("%d", &aux_n);
+            setbuf(stdin,NULL);
+
+            for (lin_for=0; lin_for<aux_n; lin_for++)
+            {
+                printf("\nEntre com a contribuição do átomo na célula (em decimais): ");
+                scanf("%f", &con_ato);
+                setbuf(stdin, NULL);
+                printf("\nEntre com a quantidade de átomos contribuintes: ");
+                scanf("%d", &qua_ato);
+
+                qua_ato = qua_ato *con_ato;
+                vet_con[lin_for] = qua_ato;
+            }//for átomos no plano (vetorial)
+
+            for (lin_for=0; lin_for<aux_n; lin_for++)
+            {
+                if (lin_for==0)
+                {
+                    qua_ato = vet_con[lin_for];
+                }
+                else
+                {
+                    qua_ato = qua_ato + vet_con[lin_for];
+                }
+            }//for átomos no plano (escalar)
+
+            den_pla = (qua_ato * 3,141592*pow(raio_atomo,2))/ (pow(parametro_de_rede,2));
+            fra_emp = (qua_ato * 3,141592 * pow(raio_atomo,2))/ (pow(parametro_de_rede,2));
+
+            printf("\nDensidade Planar:%.4f átomos/nm.nm \nFração de empacotamento:%.4f");
+
+            break;
+
+        case 2:
+            printf("\nEntre com a quantidade de contribuições diferentes no plano: ");
+            scanf("%d", &aux_n);
+            setbuf(stdin,NULL);
+
+            for (lin_for=0; lin_for<aux_n; lin_for++)
+            {
+                printf("\nEntre com a contribuição do átomo na célula (em decimais): ");
+                scanf("%f", &con_ato);
+                setbuf(stdin, NULL);
+                printf("\nEntre com a quantidade de átomos contribuintes: ");
+                scanf("%d", &qua_ato);
+
+                qua_ato = qua_ato *con_ato;
+                vet_con[lin_for] = qua_ato;
+            }//for átomos no plano (vetorial)
+
+            for (lin_for=0; lin_for<aux_n; lin_for++)
+            {
+                if (lin_for==0)
+                {
+                    qua_ato = vet_con[lin_for];
+                }
+                else
+                {
+                    qua_ato += vet_con[lin_for];
+                }
+            }//for átomos no plano (escalar)
+
+            den_pla = (qua_ato * 3,141592*pow(raio_atomo,2)) / ((pow(parametro_de_rede,2)/2));
+            fra_emp = (qua_ato * 3,141592 * pow(raio_atomo,2))/ (pow(parametro_de_rede,2));
+
+            printf("\nDensidade Planar:%.4f átomos/nm.nm \nFração de empacotamento:%.4f");
+
+            break;
+
+        default:
+            printf("\nPlano não listado!");
+            break;
+
+        }//switch densidade
+
+        break;
+
+    case 3:
+        parametro_de_rede = 4*raio_atomo/sqrt(2);
+        do
+        {
+            printf("\nInsira a opção de equação que define o plano:\n1 - Quadrado\n3 - Triângulo: ");
+            scanf("%d", &opc_den_pla);
+            setbuf(stdin, NULL);
+        }
+        while (opc_den_pla!=1 && opc_den_pla!=2);
+
+        switch (opc_den_pla)
+        {
+
+        case 1:
+            printf("\nEntre com a quantidade de contribuições diferentes no plano: ");
+            scanf("%d", &aux_n);
+            setbuf(stdin,NULL);
+
+            for (lin_for=0; lin_for<aux_n; lin_for++)
+            {
+                printf("\nEntre com a contribuição do átomo na célula (em decimais): ");
+                scanf("%f", &con_ato);
+                setbuf(stdin, NULL);
+                printf("\nEntre com a quantidade de átomos contribuintes: ");
+                scanf("%d", &qua_ato);
+
+                qua_ato = qua_ato *con_ato;
+                vet_con[lin_for] = qua_ato;
+            }//for átomos no plano (vetorial)
+
+            for (lin_for=0; lin_for<aux_n; lin_for++)
+            {
+                if (lin_for==0)
+                {
+                    qua_ato = vet_con[lin_for];
+                }
+                else
+                {
+                    qua_ato = qua_ato + vet_con[lin_for];
+                }
+            }//for átomos no plano (escalar)
+
+            den_pla = (qua_ato * 3,141592*pow(raio_atomo,2)) / (pow(parametro_de_rede,2));
+            fra_emp = (qua_ato * 3,141592 * pow(raio_atomo,2))/ (pow(parametro_de_rede,2));
+
+            printf("\nDensidade Planar:%.4f átomos/nm.nm \nFração de empacotamento:%.4f");
+            break;
+
+        case 2:
+            printf("\nEntre com a quantidade de contribuições diferentes no plano: ");
+            scanf("%d", &aux_n);
+            setbuf(stdin,NULL);
+
+            for (lin_for=0; lin_for<aux_n; lin_for++)
+            {
+                printf("\nEntre com a contribuição do átomo na célula (em decimais): ");
+                scanf("%f", &con_ato);
+                setbuf(stdin, NULL);
+                printf("\nEntre com a quantidade de átomos contribuintes: ");
+                scanf("%d", &qua_ato);
+
+                qua_ato = qua_ato *con_ato;
+                vet_con[lin_for] = qua_ato;
+            }//for átomos no plano (vetorial)
+
+            for (lin_for=0; lin_for<aux_n; lin_for++)
+            {
+                if (lin_for==0)
+                {
+                    qua_ato = vet_con[lin_for];
+                }
+                else
+                {
+                    qua_ato += vet_con[lin_for];
+                }
+            }//for átomos no plano (escalar)
+
+            den_pla = (qua_ato * 3,141592*pow(raio_atomo,2)) / ((pow(parametro_de_rede,2)/2));
+            fra_emp = (qua_ato * 3,141592 * pow(raio_atomo,2))/ (pow(parametro_de_rede,2));
+
+            printf("\nDensidade Planar:%.4f átomos/nm.nm \nFração de empacotamento:%.4f");
+
+            break;
+
+        default:
+            printf("\nPlano não listado!");
+            break;
+
+        }//switch densidade
+        break;
+
+    default:
+        printf("\nNão é estrutura cúbica!");
+    }//switch estrutura
+}
+
+void LeiBra (float co_xn, float co_xd, float co_yn, float co_yd, float co_zn, float co_zd, float raio_atomo) //função
+{
+
+    float  aux_d1=0, aux_d2=0, aux_d3=0, radiacao_emitida=0;
+    float IM_h=0, IM_k=0, IM_l=0;
+    int dir_h=0, dir_k=0, dir_l=0;
+
+    if (co_xn==0 || co_yn==0 ||co_zn==0)
+    {
+
+        co_xn = abs(co_xn - co_xd);
+        co_yn = abs(co_yn - co_yd);
+        co_zn = abs(co_zn - co_zd);
+        printf("\n%f %f %f ", co_xn, co_yn, co_zn);
+        aux_d1 = co_xn;
+        aux_d2 = co_yn;
+        aux_d3 = co_zn;
+        printf("\n%f %f %f ", aux_d1, aux_d2, aux_d3);
+        co_xn = co_xd;
+        co_yn = co_yd;
+        co_zn = co_zd;
+        printf("\n%f %f %f ", co_xn, co_yn, co_zn);
+        co_xd = aux_d1;
+        co_yd = aux_d2;
+        co_zd = aux_d3;
+        printf("\n%f %f %f ", co_xd, co_yd, co_zd);
+        co_yd = MMC_Aux(co_xd, co_yd);
+        co_zd = MMC_Aux(co_yd, co_zd);
+        co_yd = co_zd;
+        co_xd = co_yd;
+
+        printf("\n%f %f %f ", co_xd, co_yd, co_zd);
+    }
+    IM_h = co_xn * (co_xd/aux_d1);
+    IM_k = co_yn * (co_yd/aux_d2);
+    IM_l = co_zn * (co_zd/aux_d3);
+
+    dir_h = IM_h;
+    dir_k = IM_k;
+    dir_l = IM_l;
+
+    printf("\n%d %d %d ", dir_h, dir_k, dir_l);
+
+    printf("\nEntre com o comprimento de onda emitido em nm: ");
+    scanf("%f", &radiacao_emitida);
+    setbuf(stdin, NULL);
+
+    int opc_est_cri=0;
+    while (opc_est_cri!=1 && opc_est_cri!=2 && opc_est_cri!=3)
+    {
+        printf("\nInsira a estrutura cúbica correspondente:\n1 - CS\n2 - CCC\n3 - CFC :");
+        scanf("%d", &opc_est_cri);
+        setbuf(stdin, NULL);
+        if(opc_est_cri!=1 && opc_est_cri!=2 && opc_est_cri!=3)
+        {
+            printf("Opçao invalida!\n");
+        }
+    }
+
+    float angulo_reflexao=0;
+
+    switch (opc_est_cri)
+    {
+
+    case 1:
+        angulo_reflexao = asin(radiacao_emitida/(2*sqrt(pow(IM_h,2)+pow(IM_k,2)+pow(IM_l,2))));
+        printf("\nO ângulo de reflexão é de %.2f rad", angulo_reflexao);
+
+        break;
+
+    case 2:
+        if ((dir_h+dir_k+dir_l)%2==0)
+        {
+            angulo_reflexao = asin(radiacao_emitida/2*sqrt(pow(IM_h,2)+pow(IM_k,2)+pow(IM_l,2)));
+            printf("\nO ângulo de reflexão é de %.2 rad", angulo_reflexao);
+        }
+        else
+        {
+            printf("\nNão difrata em (%d  %d  %d)", dir_h, dir_k, dir_l);
+        }
+        break;
+
+    case 3:
+        if (dir_h%2==0 && dir_k%2==0 && dir_l%2==0)
+        {
+            angulo_reflexao = asin(radiacao_emitida/2*sqrt(pow(IM_h,2)+pow(IM_k,2)+pow(IM_l,2)));
+            printf("\nO ângulo de reflexão é de %.2f rad", angulo_reflexao);
+
+        }
+        else if (dir_h%2==1 && dir_k%2==1 && dir_l%2==1)
+        {
+            angulo_reflexao = asin(radiacao_emitida/2*sqrt(pow(IM_h,2)+pow(IM_k,2)+pow(IM_l,2)));
+            printf("\nO ângulo de reflexão é de %.2f rad", angulo_reflexao);
+
+        }
+        else
+        {
+            printf("\nNão difrata em (%d  %d  %d)", dir_h, dir_k, dir_l);
+        }
+        break;
+
+    default:
+        printf("\nÍndices ou estrutura inválidos!");
+        break;
+
+    }//switch estrutura cristalina
+}
+
+void GraDif(float lambda, float teta) //função gráfico do difratograma
+{
+
+    //A intenção é encontrar uma combinação dos indices de Miller que obedeçam a equação:
+    //sqrt((pow(h,2)+pow(k,2)+pow(l,2)+) == lambda/2*sin(teta)
+    //Esta combinação se estende até 'teta==pi (em radianus)
+    //A função cintila até alguma coordenada de Miller, nesta coordenada, a função gera um pico obedecendo a equação
+}
+
+
+int main()
+{
+    setlocale(LC_ALL,"");
+
+    int opcao=0, enquanto=1, rede=0, atomo_centrado=0;
+    float ladoa=0, ladob=0, ladoc=0, alfa=0, beta=0, gama=0, n_atomos_vertice=0, n_atomos_face=0;
+    float atomos_total=1, d_rep=0, d_int=0;
+    float ci_xn=0, ci_xd=0, ci_yn=0, ci_yd=0, ci_zn=0, ci_zd=0;
+    float cf_xn=0, cf_xd=0, cf_yn=0, cf_yd=0, cf_zn=0, cf_zd=0;
+    float raio_atomo=0;
+    int opc_dis_fat=0;
+    float co_xn=0, co_xd=0, co_yn=0, co_yd=0, co_zn=0, co_zd=0;
+    float lambda = 0, teta=0;
+
+    printf("\n|CM64A-Metais_Cúbicos.app|");
+    printf("\n||Menu Inicial||");
+    printf("\n");
+    while (enquanto < 9 && enquanto > 0)
+    {
+        printf("\n1 - Definir Estrutura Cristalina;\n2 -  Calcular os Índices de Miller;\n");
+        printf("3 - Calcular Distância de Repetição;\n4 -  Calcular Densidade Linear e Fração de Empacotamento;\n");
+        printf("5 - Calcular Distância Interplanar;\n6 -  Calcular Densidade Interplanar e Fração de Empacotamento;\n");
+        printf("7 - Calcular a Lei de Bragg;\n8 -  Plotar Difratograma da Estrutura Cristalina;\n");
+        printf("\n9 - Sair;\n");
+        scanf("%d", &opcao);
+        setbuf(stdin, NULL);
+
+        switch (opcao)
+        {
+
+        case 1:
+            printf("Entre com o lado a: ");
+            scanf("%f", &ladoa);
+            setbuf(stdin, NULL);
+            printf("\nEntre com o lado b: ");
+            scanf("%f", &ladob);
+            setbuf(stdin, NULL);
+            printf("\nEntre com o lado c: ");
+            scanf("%f", &ladoc);
+            setbuf(stdin, NULL);
+            printf("\nEntre com o ângulo alfa (em graus): ");
+            scanf("%f", &alfa);
+            setbuf(stdin, NULL);
+            printf("\nEntre com o ângulo beta (em graus): ");
+            scanf("%f", &beta);
+            setbuf(stdin, NULL);
+            printf("\nEntre com o ângulo gama (em graus): ");
+            scanf("%f", &gama);
+            setbuf(stdin, NULL);
+
+            EstCri (ladoa,ladob,ladoc,alfa,beta,gama);
+
+            while (rede!=1 && rede !=2)
+            {
+                printf("\nDeseja Calcular a Rede Braval da Estrutura?\n1 - Sim\t2 - Não\n");
+                scanf("%d", &rede);
+                setbuf(stdin, NULL);
+                if(rede!=1 && rede !=2)
+                {
+                    printf("\nOpção inválida!");
+                }
+            }//while opção rede de bravais
+            if (rede == 1)
+            {
+                printf("\nEntre com o número de átomos nos vértice: ");
+                scanf("%f", &n_atomos_vertice);
+                setbuf(stdin, NULL);
+                atomos_total = atomos_total + (n_atomos_vertice/8);
+                printf("\nEntre com o número de átomos nas faces: ");
+                scanf("%f", &n_atomos_face);
+                setbuf(stdin, NULL);
+
+                atomos_total = atomos_total + (n_atomos_face/2);
+
+                while (atomo_centrado!=1 && atomo_centrado !=2)
+                {
+                    printf("\nA estrutura possui átomo centrado na célula?\n1 - Sim\t2 - Não\n");
+                    scanf("%d", &atomo_centrado);
+                    setbuf(stdin, NULL);
+                }//while átomo centrado
+
+                if (atomo_centrado!=2)
+                {
+                    atomos_total++;
+                }
+                else if (atomo_centrado==2 && atomos_total<4)
+                {
+                    atomos_total = 1;
+                }
+                else
+                {
+                    atomos_total = 4;
+                }
+
+                RedBra(ladoa,ladob,ladoc,alfa,beta,gama,atomos_total);
+                atomo_centrado = 0;
+                rede = 0;
+            }
+            else {}
+
+            break;
+
+        case 2:
+            printf("\nDigite o numerador da coordenada X do ponto inicial: ");
+            scanf("%f", &ci_xn);
+            setbuf(stdin, NULL);
+            printf("\nDigite o denominador da coordenada X do ponto inicial: ");
+            scanf("%f", &ci_xd);
+            setbuf(stdin, NULL);
+            printf("\nDigite o numerador da coordenada Y do ponto inicial: ");
+            scanf("%f", &ci_yn);
+            setbuf(stdin, NULL);
+            printf("\nDigite o denominador da coordenada Y do ponto inicial: ");
+            scanf("%f", &ci_yd);
+            setbuf(stdin, NULL);
+            printf("\nDigite o numerador da coordenada Z do ponto inicial: ");
+            scanf("%f", &ci_zn);
+            setbuf(stdin, NULL);
+            printf("\nDigite o denominador da coordenada Z do ponto inicial: ");
+            scanf("%f", &ci_zd);
+            setbuf(stdin, NULL);
+            printf("\nDigite o numerador da coordenada X do ponto final: ");
+            scanf("%f", &cf_xn);
+            setbuf(stdin, NULL);
+            printf("\nDigite o denominador da coordenada X do ponto final: ");
+            scanf("%f", &cf_xd);
+            setbuf(stdin, NULL);
+            printf("\nDigite o numerador da coordenada Y do ponto final: ");
+            scanf("%f", &cf_yn);
+            setbuf(stdin, NULL);
+            printf("\nDigite o denominador da coordenada Y do ponto final: ");
+            scanf("%f", &cf_yd);
+            setbuf(stdin, NULL);
+            printf("\nDigite o numerador da coordenada Z do ponto final: ");
+            scanf("%f", &cf_zn);
+            setbuf(stdin, NULL);
+            printf("\nDigite o denominador da coordenada Z do ponto final: ");
+            scanf("%f", &cf_zd);
+            setbuf(stdin, NULL);
+
+            IndMil(ci_xn, ci_xd, ci_yn, ci_yd, ci_zn, ci_zd, cf_xn, cf_xd, cf_yn, cf_yd, cf_zn, cf_zd);
+            break;
+
+        case 3:
+            printf("\nEntre com o raio do átomo (nm): ");
+            scanf("%f", &raio_atomo);
+            setbuf(stdin, NULL);
+
+            d_rep = DisRep(raio_atomo);
+            printf("\n%.4f nm é a distância de repetição da estrutura.", d_rep);
+            break;
+
+        case 4:
+            do
+            {
+                printf("\nHá uma distância calculada?\n1 - Sim\n2 - Não\n");
+                scanf("%d", &opc_dis_fat);
+            }
+            while (opc_dis_fat!=2 && opc_dis_fat!=1);
+
+            if (opc_dis_fat==1 && d_rep!=0)
+            {
+                DenLin_FraEmp(d_rep, raio_atomo);
+
+            }
+            else if(opc_dis_fat==1 && d_rep==0)
+            {
+                printf("\nO aplicativo não encontrou um valor para a distância de repetição, voltando ao menu inicial!");
+
+            }
+            else
+            {
+                printf("No menu inicial, insira a opção '3' para o cálculo da distância de repetição!\n");
+            }
+            break;
+
+        case 5:
+            printf("\nEntre com o raio do átomo:");
+            scanf("%f", &raio_atomo);
+            setbuf(stdin, NULL);
+            d_int = DisInt(raio_atomo);
+            printf("\n%.4f nm é a distância interplanar!", d_int);
+            break;
+
+        case 6:
+            printf("\nDigite o numerador da coordenada X: ");
+            scanf("%f", &co_xn);
+            setbuf(stdin, NULL);
+            printf("\nDigite o denominador da coordenada X: ");
+            scanf("%f", &co_xd);
+            setbuf(stdin, NULL);
+            printf("\nDigite o numerador da coordenada Y: ");
+            scanf("%f", &co_yn);
+            setbuf(stdin, NULL);
+            printf("\nDigite o denominador da coordenada Y: ");
+            scanf("%f", &co_yd);
+            setbuf(stdin, NULL);
+            printf("\nDigite o numerador da coordenada Z: ");
+            scanf("%f", &co_zn);
+            setbuf(stdin, NULL);
+            printf("\nDigite o denominador da coordenada Z: ");
+            scanf("%f", &co_zd);
+            setbuf(stdin, NULL);
+
+            printf("\nInsira o raio do átomo em nm: ");
+            scanf("%d", &raio_atomo);
+
+            DenPla_FraEmp(co_xn, co_xd, co_yn, co_yd, co_zn, co_zd, raio_atomo);
+            break;
+
+        case 7:
+            printf("\nDigite o numerador da coordenada X: ");
+            scanf("%f", &co_xn);
+            setbuf(stdin, NULL);
+            printf("\nDigite o denominador da coordenada X: ");
+            scanf("%f", &co_xd);
+            setbuf(stdin, NULL);
+            printf("\nDigite o numerador da coordenada Y: ");
+            scanf("%f", &co_yn);
+            setbuf(stdin, NULL);
+            printf("\nDigite o denominador da coordenada Y: ");
+            scanf("%f", &co_yd);
+            setbuf(stdin, NULL);
+            printf("\nDigite o numerador da coordenada Z: ");
+            scanf("%f", &co_zn);
+            setbuf(stdin, NULL);
+            printf("\nDigite o denominador da coordenada Z: ");
+            scanf("%f", &co_zd);
+            setbuf(stdin, NULL);
+
+            printf("\nInsira o raio do átomo em nm: ");
+            scanf("%f", &raio_atomo);
+            setbuf(stdin,NULL);
+
+            LeiBra(co_xn, co_xd, co_yn, co_yd, co_zn, co_zd, raio_atomo);
+            break;
+
+        case 8:
+            printf("\nEntre com a intensidade de onda: ");
+            scanf("%f", &lambda);
+            setbuf(stdin, NULL);
+            printf("\nEntre com o ângulo em rad: ");
+            scanf("%f", &teta);
+            setbuf(stdin, NULL);
+
+            GraDif(lambda, teta);
+
+            break;
+
+        case 9:
+            printf("\n\n\tENCERRANDO...\n\t\t\by PAULO E RAFAEL.");
+            exit(1);
+            break;
+
+        default:
+            printf("\nOPÇÃO INVÁLIDA!!!\n\tRetornando ao menu inicial\n");
+            break;
+
+        }//switch
+    }//while referente ao menu
+
+    return 0;
+}
